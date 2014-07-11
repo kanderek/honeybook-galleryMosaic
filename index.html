@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Vendor - Project Gallery</title>
+<style>
+
+	body {
+		margin: 0;
+		height: 100%;
+		/* width: 94%;  */
+		width: 80%;
+		/*margin: 9% 2.5%;*/
+		margin: 5% 10%;
+	}
+	.wrapper {
+		width: 100%;
+		display: inline-block;
+		position: relative;
+	}
+	.wrapper:after {
+	    padding-top: 58.09%; /*16:9 ratio*/
+	    display: block;
+	    content: '';
+	}
+	.main {
+	    position: absolute;
+	    top: 0; bottom: 0; right: 0; left: 0; /*fill parent*/
+	}
+
+	#mosaic-gallery {
+	    position: relative;
+	    width: 100%;
+	    height: 100%;
+	    /*margin: 9% 2.5%;*/
+	    /*overflow: auto;*/
+	}
+
+	#mosaic-gallery div {
+		position: absolute;
+	    background-color: rgba(200,100,100,0.6);
+	    margin: 0 0.5% 1% 0.5%;
+	    overflow: hidden;
+	}
+
+	#mosaic-gallery img {
+		position: absolute;
+		height: 100%;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+	}
+
+	#mosaic-gallery div:after {
+	    display: block;
+	    content: '';
+	}
+
+
+	#mosaic-gallery div > div {
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    right: 0;
+	    left: 0;
+	}
+
+	.image-main {
+	    width: 43.82%;
+	}
+
+	.image-main:after {
+	    padding-top: 67.45%;
+	}
+
+	.image-type1 {
+	    width: 11.95%;/*12.08%;*/
+	}
+
+	.image-type1:after {
+	    padding-top: 100%;
+	}
+
+	.image-type2 {
+	    width: 21.83%;/*22.06%;*/
+	}
+
+	.image-type2:after {
+	    padding-top: 54.76%;
+	}
+
+	.image-type3 {
+	    width: 23.91%;
+	}
+
+	.image-type3:after {
+	    padding-top: 50%;
+	}
+
+	.image-type4 {
+	    width: 31.60%;
+	}
+
+	.image-type4:after {
+	    padding-top: 44.74%;
+	}
+
+	.image-type5 {
+	    width: 21.83%;
+	}
+
+	.image-type5:after {
+	    padding-top: 145.71%;
+	}
+
+	.image-type6 {
+	    width: 15.25%;
+	}
+
+	.image-type6:after {
+	    padding-top: 94.50%;
+	}
+
+	.image-type7 {
+	    width: 16.2%;
+	}
+
+	.image-type7:after {
+	    padding-top: 87.0%;
+	}
+
+	.image-type8 {
+	    width: 26.8%;
+	}
+
+	.image-type8:after {
+	    padding-top: 52.6%;
+	}
+
+	#image1,
+	#image2,
+	#image3,
+	#image4,
+	#image5,
+	#image6 {
+		top: 0;
+	}
+
+	#image1 {
+		left: 0;
+	}
+
+	#image2 {
+		/*left: 12.95%;*/
+		left: 13.25%;
+	}
+
+	#image3 {
+		/*left: 35.78%;*/
+		left: 36.08%;
+	}
+
+	#image4 {
+		/*left: 48.73%;*/
+		left: 49.13%;
+	}
+
+	#image5 {
+		/*left: 61.68%;*/
+		left: 62.12%;
+	}
+
+	#image6 {
+		/*left: 74.63%;*/
+		left: 75.23%;
+	}
+
+	#image7,
+	#image8,
+	#image9 {
+		top: 22.20%;
+	}
+
+	#image7 {
+		left: 0;
+	}
+
+	#image8 {
+		left: 22.75%;
+	}
+
+	#image9 {
+		left: 67.50%;
+	}
+
+	#image10 {
+		top: 44.4%;
+		left: 0;
+	}
+
+	#image11,
+	#image12 {
+		top: 48.3%;
+	}
+
+	#image11 {
+		left: 67.50%;
+	}
+
+	#image12 {
+		left: 83.90%;
+	}
+
+	#image13,
+	#image14,
+	#image15 {
+		top: 74.9%;
+	}
+
+	#image13 {
+		left: 22.75%;
+	}
+
+	#image14 {
+		left: 55.28%;
+	}
+
+	#image15 {
+		left: 72.34%;
+	}
+
+	#mosaic-gallery .image-overlay {
+		position: absolute;
+		width: 95.58%;
+		height: 27.43%;
+		left: 0.22%;
+		bottom: 0.4%;
+		top: auto;
+		right: auto;
+		background-color: rgba(100,100,100,0.6);
+		padding: 1.5%;
+	}
+
+	.image-overlay h2 {
+		margin: 3% 0 0 0;
+		font-size: 2.0vw;
+	}
+
+	.image-overlay h3 {
+		margin: 0;
+		font-size: 1.5vw;
+	}
+
+	.previous-image,
+	.next-image,
+	.modal-previous-image,
+	.modal-next-image {
+		position: absolute;
+		border: none;
+		outline: 0;
+		cursor: pointer;
+		background-image: url("icon_5581/icon_5581.png");
+		background-position: 50%;
+		background-size: 80%;
+		background-repeat: no-repeat;
+		background-color: transparent;
+	}
+
+	.previous-image,
+	.next-image {
+		width: 10%;
+		height: 40%;
+		bottom: 0;
+	}
+
+	.previous-image {
+		right: 10%;
+	}
+
+	.next-image {
+		right: 0;
+	}
+
+	.modal-previous-image,
+	.previous-image {
+		transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+	}
+
+	.lightbox-modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(100,20,20,0.8);
+		text-align: center;
+	    visibility: hidden;
+	}
+
+	.lightbox-modal:before, .preview-full { 
+	  /* these are the important styles for the centered element: */ 
+	  display: inline-block; 
+	  vertical-align: middle; 
+	} 
+	.lightbox-modal:before { 
+	  /* this is the important part */ 
+	  content: ''; 
+	  display: inline-block; 
+	  width: 0; 
+	  height: 100%; 
+	  vertical-align: middle; 
+	  /* this just takes care of whitespace added by having display:inline-block (there are other methods) */ 
+	  margin-left: -0.25em; 
+	} 
+
+	.preview-full {
+/*		display: inline-block;
+		vertical-align: middle;*/
+		position: relative;
+		margin: auto;
+	}
+
+	.modal-previous-image,
+	.modal-next-image {
+		height: 100%;
+		width: 10%;
+		background-color: rgba(10,10,10,0.1);
+		border: none;
+		top: 0;
+	}
+
+	.modal-previous-image {
+		left: 0;
+	}
+
+	.modal-next-image {
+		right: 0;
+	}
+
+	.hide {
+		visibility: hidden;
+	}
+
+	.show {
+		visibility: visible;
+	}
+
+</style>
+</head>
+
+<body>
+	<div class = "wrapper">
+	    <div class = "main">
+        	<section id="mosaic-gallery">
+				<div id="image1" class="image-type1">
+					<img src="http://lorempixel.com/1000/300/cats/1" alt="image1">
+				</div>
+				<div id="image2" class="image-type2">
+					<img src="http://lorempixel.com/1000/300/cats/2" alt="image2">
+				</div>
+				<div id="image3" class="image-type1">
+					<img src="http://lorempixel.com/1000/300/cats/3" alt="image3">
+				</div>
+				<div id="image4" class="image-type1">
+					<img src="http://lorempixel.com/1000/300/cats/4" alt="image4">
+				</div>
+				<div id="image5" class="image-type1">
+					<img src="http://lorempixel.com/1000/300/cats/5" alt="image5">
+				</div>
+				<div id="image6" class="image-type3">
+					<img src="http://lorempixel.com/1000/300/cats/6" alt="image6">
+				</div>
+				<div id="image7" class="image-type2">
+					<img src="http://lorempixel.com/1000/300/cats/7" alt="image7">
+				</div>
+				<div id="image8" class="image-main">
+					<img src="http://lorempixel.com/1000/300/cats/8" alt="image8">
+					<div class="image-overlay">
+						<h2>Image Name</h2>
+						<h3>Gallery Name</h3>
+						<button class="next-image"></button>
+						<button class="previous-image"></button>
+					</div>
+				</div>
+				<div id="image9" class="image-type4">
+					<img src="http://lorempixel.com/1000/300/cats/9" alt="image9">
+				</div>
+				<div id="image10" class="image-type5">
+					<img src="http://lorempixel.com/1000/300/cats/9" alt="image10">
+				</div>
+				<div id="image11" class="image-type6">
+					<img src="http://lorempixel.com/1000/300/cats/10" alt="image11">
+				</div>
+				<div id="image12" class="image-type6">
+					<img src="http://lorempixel.com/1000/300/cats/11" alt="image12">
+				</div>
+				<div id="image13" class="image-type4">
+					<img src="http://lorempixel.com/1000/300/cats/12" alt="image13">
+				</div>
+				<div id="image14" class="image-type7">
+					<img src="http://lorempixel.com/1000/300/cats/13" alt="image14">
+				</div>
+				<div id="image15" class="image-type8">
+					<img src="http://lorempixel.com/1000/300" alt="image15">
+				</div>
+			</section>
+	    </div>
+	</div>
+	<div class="lightbox-modal">
+		<div class="preview-full">
+			<img src="http://lorempixel.com/1000/300/cats/9" alt="imagex">
+			<button class="modal-previous-image"></button>
+			<button class="modal-next-image"></button>
+		</div>
+	</div>
+	<script>
+
+		var modal = document.body.childNodes[3];
+		var modalImage = modal.getElementsByTagName("img")[0];
+		var imageGallery = document.getElementById("image8");
+		var mainImage = imageGallery.getElementsByTagName("img")[0];
+		var images = [
+				"http://lorempixel.com/1000/300/cats/1",
+				"http://lorempixel.com/1000/300/cats/2",
+				"http://lorempixel.com/1000/300/cats/3",
+				"http://lorempixel.com/1000/300/cats/4",
+				"http://lorempixel.com/1000/300/cats/5",
+				"http://lorempixel.com/1000/300/cats/6",
+				"http://lorempixel.com/1000/300/cats/7",
+				"http://lorempixel.com/1000/300/cats/8",
+				"http://lorempixel.com/1000/300/cats/9",
+				"http://lorempixel.com/1000/300/cats/10",
+				"http://lorempixel.com/1000/300/cats/11",
+				"http://lorempixel.com/1000/300/cats/12",
+				"http://lorempixel.com/1000/300/cats/13",
+				"http://lorempixel.com/1000/300/cats/14",
+				"http://lorempixel.com/1000/300/cats/15",
+			];
+		var currentImage = 7;
+		var MAX_IMAGES = 15;
+
+		function handler(event) {
+			var target = event.target ? event.target : event.srcElement;
+
+			if(target.parentNode.id.match(/^image\d+/)){
+				currentImage = images.indexOf(target.src);
+				modalImage.src = images[currentImage];
+				modal.classList.add("show");
+			}
+
+			if(target.classList.contains("lightbox-modal")){
+				modal.classList.remove("show");
+			}
+
+			if(target.classList.contains("previous-image") && currentImage > 0) {
+				currentImage -= 1;
+				mainImage.src = images[currentImage];
+			} 
+
+			if(target.classList.contains("modal-previous-image") && currentImage > 0) {
+				currentImage -= 1;
+				modalImage.src = images[currentImage];
+			}
+
+			if(target.classList.contains("next-image") && currentImage < MAX_IMAGES) {
+				currentImage += 1;
+				mainImage.src = images[currentImage];
+			}
+
+			if(target.classList.contains("modal-next-image")) {
+				currentImage += 1;
+				modalImage.src = images[currentImage];
+			}	
+		}
+
+		document.body.addEventListener("click", handler, false);
+
+	</script>
+
+</body>
+</html>
